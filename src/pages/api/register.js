@@ -1,5 +1,5 @@
 import cookie from "cookie";
-import { CMS_URL } from "lib/config";
+import { CMS_URL } from "src/lib/config";
 
 export default async (req, res) => {
   if (req.method === "POST") {
