@@ -5,4 +5,4 @@ export const UPLOAD_URL = process.env.API_UPLOAD_URL ||
 "https://strapimns.onrender.com";
 
 export const NEXT_URL = process.env.NEXT_FRONTEND_URL ||
- "http://localhost:3000";
+ "https://mns.vercel.app";
