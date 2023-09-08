@@ -73,7 +73,7 @@ function StatusMaintenance() {
               <img
                 alt="Maintenance"
                 height={250}
-                src="/static/images/status/maintenance.svg"
+                src="maintenance.svg"
               />
             </Box>
             <Divider sx={{ my: 4 }} />
