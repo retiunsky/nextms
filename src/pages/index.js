@@ -16,7 +16,7 @@ export default function CategoriesPage() {
         <title>MNS - Categories</title>
       </Head>
       <PageTitleWrapper>
-        <PageTitle heading="Categories" subHeading="Categories content." />
+        <PageTitle heading="Categories" subHeading="Categories content" />
       </PageTitleWrapper>
       <Container maxWidth="lg">
         <Carousel categories={categories} isLoading={isLoading} />
