@@ -6,13 +6,14 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import CategoryItem from '../categoryItem';
+import Skeleton from '@mui/material/Skeleton';
 
-export default function Carousel({ categories }) {
+export default function Carousel({ categories, isLoading }) {
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('md'));
   const tablet = useMediaQuery(theme.breakpoints.only('sm'));
   const responsive = desktop ? 4 : tablet ? 3 : 2;
-
+  let category = { 0: 0 };
   return (
     <Swiper
       rewind={true}
@@ -21,26 +22,33 @@ export default function Carousel({ categories }) {
       freeMode={true}
       pagination={{
         clickable: true,
-        dynamicBullets: true
+        dynamicBullets: true,
       }}
-      navigation={true}
       keyboard={{
-        enabled: true
+        enabled: true,
       }}
       modules={[Keyboard, FreeMode, Navigation, Pagination]}
-      className="mySwiper"
-      style={{
-        '--swiper-navigation-color': `${theme.palette.primary.main}`,
-        '--swiper-pagination-color': `${theme.palette.primary.main}`
-      }}
+      className='mySwiper'      
     >
-      {categories.map((category) => {
-        return (
-          <SwiperSlide key={category.id}>
-            <CategoryItem category={category} />
-          </SwiperSlide>
-        );
-      })}
+      {isLoading
+        ? Array.from({ length: 10 }, () => category).map((category, i) => {
+            return (
+              <SwiperSlide key={i}>
+                <Skeleton
+                  animation='wave'
+                  height={310}
+                  width='80%'
+                />
+              </SwiperSlide>
+            );
+          })
+        : categories.map((category) => {
+            return (
+              <SwiperSlide key={category.id}>
+                <CategoryItem category={category} />
+              </SwiperSlide>
+            );
+          })}
     </Swiper>
   );
 }
