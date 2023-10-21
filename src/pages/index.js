@@ -8,7 +8,7 @@ import Carousel from "src/components/SwiperCarousel";
 import { useCategories } from "src/lib/hooks/useCategories";
 
 export default function CategoriesPage() {
-  const categories = useCategories();
+  const {categories, isLoading } = useCategories();
   
   return (
     <>
@@ -19,7 +19,7 @@ export default function CategoriesPage() {
         <PageTitle heading="Categories" subHeading="Categories content." />
       </PageTitleWrapper>
       <Container maxWidth="lg">
-        <Carousel categories={categories} />
+        <Carousel categories={categories} isLoading={isLoading} />
       </Container>
       <Footer />
     </>
