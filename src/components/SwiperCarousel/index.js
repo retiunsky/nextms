@@ -8,12 +8,11 @@ import 'swiper/css/navigation';
 import CategoryItem from '../categoryItem';
 import Skeleton from '@mui/material/Skeleton';
 
-export default function Carousel({ categories, isLoading }) {
+export default function Carousel({ categories }) {
   const theme = useTheme();
   const desktop = useMediaQuery(theme.breakpoints.up('md'));
   const tablet = useMediaQuery(theme.breakpoints.only('sm'));
   const responsive = desktop ? 4 : tablet ? 3 : 2;
-  let category = { 0: 0 };
   return (
     <Swiper
       rewind={true}
@@ -28,27 +27,17 @@ export default function Carousel({ categories, isLoading }) {
         enabled: true,
       }}
       modules={[Keyboard, FreeMode, Navigation, Pagination]}
-      className='mySwiper'      
+      className='mySwiper'
     >
-      {isLoading
-        ? Array.from({ length: 10 }, () => category).map((category, i) => {
-            return (
-              <SwiperSlide key={i}>
-                <Skeleton
-                  animation='wave'
-                  height={310}
-                  width='80%'
-                />
-              </SwiperSlide>
-            );
-          })
-        : categories.map((category) => {
-            return (
-              <SwiperSlide key={category.id}>
-                <CategoryItem category={category} />
-              </SwiperSlide>
-            );
-          })}
+      {categories.map((category) => {
+        return (
+          <SwiperSlide key={category.id}>
+            <CategoryItem
+            category={category}
+            />
+          </SwiperSlide>
+        );
+      })}
     </Swiper>
   );
 }
