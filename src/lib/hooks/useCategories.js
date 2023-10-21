@@ -15,6 +15,6 @@ export function useCategories() {
     setLoading(false);
   }, []);
 
-  return categories
+  return {categories, isLoading }
 }
 
